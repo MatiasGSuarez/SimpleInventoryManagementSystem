@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using SimpleInventoryManagementSystem.Domain.ProductManagement;
+
+Inventory inventory = new Inventory(); 
+var createdProduct = inventory.CreateProduct();
+inventory.AddProduct(createdProduct);
+inventory.ShowProducts(); 
