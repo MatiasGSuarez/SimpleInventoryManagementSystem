@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace SimpleInventoryManagementSystem.Domain.ProductManagement
 {
@@ -41,11 +43,9 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
                 Console.WriteLine("Please enter a valid digit.");
             }
 
-            return new Product(id, name, price, quantityInStock);           
-   
+            return new Product(id, name, price, quantityInStock);            
 
-        }
-       
+        }       
         public void AddProduct(Product product)
         {
 
@@ -53,7 +53,6 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
             Console.WriteLine("Product added succesfully.");
          
         }
-
         public void ShowAllProducts()
         {
             foreach(Product product in Products)
@@ -62,5 +61,41 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
                 Console.WriteLine(" ------------ ");
             }
         } 
+        public void EditProduct(List<Product>products)
+        {
+            Console.Write("Enter the product NAME: ");
+            string productName = Console.ReadLine();
+
+            Product foundProduct = products.FirstOrDefault(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
+
+            if (foundProduct != null)
+            {
+                Console.WriteLine($"Found Product: {foundProduct}");
+
+                Console.Write("Enter quantity: ");
+
+                if (int.TryParse(Console.ReadLine(), out int newQuantity))
+                {
+                    foundProduct.QuantityInStock = newQuantity;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid quantity");
+                }
+
+                Console.Write("Enter the new price: ");
+                if (decimal.TryParse(Console.ReadLine(), out decimal newPrice))
+                {
+                    foundProduct.Price = newPrice;
+                }
+                else
+                {
+                    Console.WriteLine("Succes");
+                }
+
+                Console.WriteLine("Producto actualizado con éxito.");
+            }
+        }
     }
+   
 }

@@ -23,10 +23,7 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
             QuantityInStock = quantityInStock;
         }
 
-        #region Methods
 
-
-        #endregion
 
     }
 }

@@ -3,5 +3,5 @@ using SimpleInventoryManagementSystem.Domain.ProductManagement;
 
 
 
-Actions acciones = new Actions();
-acciones.ShowMainMenu();
+Actions actions = new Actions();
+actions.ShowMainMenu();
