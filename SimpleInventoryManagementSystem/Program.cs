@@ -1,6 +1,7 @@
-﻿using SimpleInventoryManagementSystem.Domain.ProductManagement;
+﻿using SimpleInventoryManagementSystem;
+using SimpleInventoryManagementSystem.Domain.ProductManagement;
 
-Inventory inventory = new Inventory(); 
-var createdProduct = inventory.CreateProduct();
-inventory.AddProduct(createdProduct);
-inventory.ShowProducts(); 
+
+
+Actions acciones = new Actions();
+acciones.ShowMainMenu();

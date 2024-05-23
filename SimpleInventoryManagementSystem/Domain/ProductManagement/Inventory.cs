@@ -9,19 +9,23 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
     public class Inventory
     {
         public List<Product> Products { get; set;}
-
          
         public Inventory()
         {
            if(Products == null)
-           {
                 Products = new List<Product>();
-           }
         }
         public Product CreateProduct()
         {
-            Console.WriteLine("Product name: ");
-            string name = Console.ReadLine();
+            Console.WriteLine("Enter the product id: ");
+            int id = Console.Read();
+
+            string name="";
+            Console.WriteLine("Enter a name for the product.");
+            while (String.IsNullOrEmpty(name))
+            {
+                name = Console.ReadLine();
+            }
 
             Console.WriteLine("Enter the product price:");
             decimal price;
@@ -37,7 +41,7 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
                 Console.WriteLine("Please enter a valid digit.");
             }
 
-            return new Product(name, price, quantityInStock);           
+            return new Product(id, name, price, quantityInStock);           
    
 
         }
@@ -50,12 +54,13 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
          
         }
 
-        public void ShowProducts()
+        public void ShowAllProducts()
         {
             foreach(Product product in Products)
             {
                 Console.WriteLine($"Product: {product.Name}\n Price: {product.Price}\n Quantity in stock {product.QuantityInStock}");
+                Console.WriteLine(" ------------ ");
             }
-        }
+        } 
     }
 }
