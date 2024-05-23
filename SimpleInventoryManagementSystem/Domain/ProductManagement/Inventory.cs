@@ -70,7 +70,7 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
 
             if (foundProduct != null)
             {
-                Console.WriteLine($"Found Product: {foundProduct}");
+                Console.WriteLine($"Found Product: {foundProduct.Name}");
 
                 Console.Write("Enter quantity: ");
 
@@ -94,6 +94,27 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
                 }
 
                 Console.WriteLine("Producto actualizado con éxito.");
+            }
+        }
+
+        public void DeleteProduct(string productName)
+        {
+            if (string.IsNullOrEmpty(productName))
+            {
+                Console.WriteLine("Please enter a product name ");
+                productName = Console.ReadLine();
+                return;
+            }
+
+            Product product = Products.Find(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
+            if (product != null)
+            {
+                Products.Remove(product);
+                Console.WriteLine($"Producto '{productName}' eliminado del inventario.");
+            }
+            else
+            {
+                Console.WriteLine("Producto no encontrado.");
             }
         }
     }

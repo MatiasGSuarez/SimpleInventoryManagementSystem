@@ -25,6 +25,7 @@ namespace SimpleInventoryManagementSystem
                 Console.WriteLine("1: Create and add a new product");
                 Console.WriteLine("2: View all products");
                 Console.WriteLine("3: Edit a product");
+                Console.WriteLine("3: Delete a product");
                 Console.WriteLine("0: Close application");
                 Console.WriteLine("Your selection: ");
                 string userSelection = Console.ReadLine();
@@ -46,6 +47,13 @@ namespace SimpleInventoryManagementSystem
                                 break;
                             case "3":
                                 inventory.EditProduct(inventory.Products);
+                                Console.WriteLine("Presione cualquier tecla para continuar");
+                                Console.Read();
+                                break;
+                            case "4":
+                                Console.WriteLine("Enter the product name");
+                                var productName = Console.ReadLine();
+                                inventory.DeleteProduct(productName);
                                 Console.WriteLine("Presione cualquier tecla para continuar");
                                 Console.Read();
                                 break;
