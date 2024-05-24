@@ -96,7 +96,6 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
                 Console.WriteLine("Producto actualizado con éxito.");
             }
         }
-
         public void DeleteProduct(string productName)
         {
             if (string.IsNullOrEmpty(productName))
@@ -115,6 +114,21 @@ namespace SimpleInventoryManagementSystem.Domain.ProductManagement
             else
             {
                 Console.WriteLine("Producto no encontrado.");
+            }
+        }
+        public void FindProduct(string productName)
+        {
+            if (string.IsNullOrEmpty(productName))
+            {
+                Console.WriteLine("Please enter a product name ");
+                productName = Console.ReadLine();
+                return;
+            }
+            Product product = Products.Find(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
+            if (product != null)
+            {
+                 
+                Console.WriteLine($"Product '{product.Name}'\n Price {product.Price} \n Quantity in stock: {product.QuantityInStock}");
             }
         }
     }
