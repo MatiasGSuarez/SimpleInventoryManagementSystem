@@ -21,11 +21,12 @@ namespace SimpleInventoryManagementSystem
             try
             {
                 Console.Clear();
-                Console.WriteLine("** Select an action **");
+                Console.WriteLine("** Choose an action **");
                 Console.WriteLine("1: Create and add a new product");
                 Console.WriteLine("2: View all products");
                 Console.WriteLine("3: Edit a product");
-                Console.WriteLine("3: Delete a product");
+                Console.WriteLine("4: Delete a product");
+                Console.WriteLine("5: Find a product");
                 Console.WriteLine("0: Close application");
                 Console.WriteLine("Your selection: ");
                 string userSelection = Console.ReadLine();
@@ -42,19 +43,26 @@ namespace SimpleInventoryManagementSystem
                                 break;
                             case "2":
                                 inventory.ShowAllProducts();
-                                Console.WriteLine("Presione cualquier tecla para continuar"); 
+                                Console.WriteLine("Press any button to continue"); 
                                 Console.Read();
                                 break;
                             case "3":
                                 inventory.EditProduct(inventory.Products);
-                                Console.WriteLine("Presione cualquier tecla para continuar");
+                                Console.WriteLine("Press any button to continue");
                                 Console.Read();
                                 break;
                             case "4":
                                 Console.WriteLine("Enter the product name");
                                 var productName = Console.ReadLine();
                                 inventory.DeleteProduct(productName);
-                                Console.WriteLine("Presione cualquier tecla para continuar");
+                                Console.WriteLine("Press any button to continue");
+                                Console.Read();
+                                break;
+                            case "5":
+                                Console.WriteLine("Enter the product name");
+                                var findProduct = Console.ReadLine();
+                                inventory.FindProduct(findProduct);
+                                Console.WriteLine("Press any button to continue");
                                 Console.Read();
                                 break;
                             default:
